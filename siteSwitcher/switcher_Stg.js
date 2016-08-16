@@ -1,49 +1,74 @@
-javascript: var SiteVersion = "Stg";
+javascript: 
+/*-- Holds the desired version of the site you want to switch to --*/
+var SiteVersion = "Stg";
+
+/*---------------------------------------------------------*/
+/*-- Holds all current known URLs for the domains we use --*/
+/*---------------------------------------------------------*/
 var Sites = [
-		//      INTERNET      //
-    { //	ISDM
+    /*------------------------------*/
+    /*---------- Internet ----------*/
+    /*------------------------------*/
+    {
+        /*-- ISDM --*/
         Dev: ["isdmwebdev.chs.gc.ca"],
         Stg: [],
         Prod: ["isdm.gc.ca", "gdsi.gc.ca", "isdm-gdsi.gc.ca", "meds.dfo-mpo.gc.ca", "sdmm.dfo-mpo.gc.ca", "meds-sdmm.dfo-mpo.gc.ca"]
 	},
-    { //	CHS
+    {
+        /*-- Charts --*/
         Dev: ["chswebdev.chs.gc.ca"],
         Stg: [],
         Prod: ["charts.gc.ca", "chs.gc.ca", "shc.gc.ca", "chs-shc.gc.ca"]
 	},
-    { //	COIL
+    {
+        /*-- COIL --*/
         Dev: ["coilwebdev.chs.gc.ca", "coilwebdev.chs-shc.gc.ca"],
         Stg: [],
         Prod: ["coil.charts.gc.ca", "coil.chs.gc.ca", "coil.chs-shc.gc.ca"]
 	},
-    { //	Tides
+    {
+        /*-- Tides --*/
         Dev: ["twldev.chs.gc.ca", "twldev.chs-shc.gc.ca"],
         Stg: [],
         Prod: ["tides.gc.ca", "marees.gc.ca", "tides-marees.gc.ca"]
 	},
-    { //	Science, Oceans, CSAS
+    {
+        /*-- DFO --*/
         Dev: ["wwwdev.ncr.dfo-mpo.ca"],
         Stg: ["wwwstg.ncr.dfo-mpo.ca"],
         Prod: ["dfo-mpo.gc.ca"]
 	},
-
-		//      INTRANET      //
-    { //	CHS
+    /*------------------------------*/
+	
+    /*------------------------------*/
+    /*---------- Intranet ----------*/
+    /*------------------------------*/
+    {
+        /*-- CHS --*/
         Dev: ["chs-intradev.chs.gc.ca", "chs-intradev.chs-shc.gc.ca"],
         Stg: [],
         Prod: ["wwwintra.charts.gc.ca", "wwwintra.chs-shc.gc.ca"]
 	},
-    { //	ISDM
+    {
+        /*-- ISDM --*/
         Dev: ["isdm-intradev.chs.gc.ca", "isdm-intradev.chs-shc.gc.ca"],
         Stg: [],
         Prod: ["intra.isdm.gc.ca", "intra.isdm-gdsi.gc.ca"]
 	},
-    { //	Science
+    {
+        /*-- DFO --*/
         Dev: ["intradev.ncr.dfo-mpo.ca"],
         Stg: [],
         Prod: ["intra.dfo-mpo.gc.ca"]
 	}
+    /*------------------------------*/
 ];
+/*---------------------------------------------------------*/
+
+/*--------------------------------------------*/
+/*-- Function that switches the current URL --*/
+/*--------------------------------------------*/
 (function () {
     for (Site in Sites) {
         for (Version in Sites[Site]) {
@@ -53,3 +78,4 @@ var Sites = [
         }
     }
 })();
+/*--------------------------------------------*/
