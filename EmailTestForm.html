@@ -1,0 +1,112 @@
+    <!-- MainContentStart -->
+    <div class="row">
+        <div class="col-md-12">
+            <h1 property="name">Test form</h1>
+            <div class="wb-frmvld">
+                <form role="form" method="post" action="testform.asp" id="testForm">
+                    <h3>Fields</h3>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="testTextField" class="required" aria-required="true"><strong class="required" aria-required="true">(required)</strong> <span class="field-name">Body of email</span></label>
+                            <textarea class="form-control full-width" id="testTextField" name="testTextField" required="required" aria-required="true"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mrgn-bttm-md">
+                        <div class="form-group">
+                            <label for="txtboxEmailTo" class="required"><span class="field-name">Send to this email</span> <strong class="required">(required)</strong></label>
+                            <input type="email" id="txtboxEmailTo" name="txtboxEmailTo" class="form-control full-width" placeholder="example@canada.ca" required="required" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 mrgn-bttm-md">
+                        <div class="form-group">
+                            <label for="txtboxEmailFrom" class="required"><span class="field-name">send from this email</span> <strong class="required">(required)</strong></label>
+                            <input type="email" id="txtboxEmailFrom" name="txtboxEmailFrom" class="form-control full-width" placeholder="example@canada.ca" required="required" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 mrgn-bttm-md">
+                        <div class="form-group">
+                            <label for="txtareaSubject" class="required"><span class="field-name">Email subject</span> <strong class="required">(required)</strong></label>
+                            <textarea id="txtareaSubject" name="txtareaSubject" class="form-control full-width" rows="3" required="required"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mrgn-tp-lg">
+                        <div class="col-sm-12">
+                            <button id="btnReset" name="btnReset" class="col-md-2 btn btn-danger" onClick="document.getElementById('testForm').reset();">Reset</button>
+                            <button type="submit" id="btnSubmit" name="btnSubmit" class="col-md-2 col-md-offset-3 btn btn-success" <% Response.Write(Session( "Csadf413dsf333fgw32563")) %>>Submit</button>
+                            <button id="btnPrint" name="btnPrint" class="col-md-2 pull-right btn btn-default" onClick="window.print()">Print</button>
+                            <p class="pull-right small mrgn-tp-sm">(If you wish to print, please do so before clicking submit)</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%
+'-------------------------------------------------------------------------------------------'
+'--------------------------form to test emailing on various servers-------------------------'
+'--------------------paste in the Main Content part of this page and test-------------------'
+'-------------------------------------------------------------------------------------------'
+'-------------------------------------------------------------------------------------------'
+'------------------------------ASP code to validate form fields-----------------------------'
+'-------------------------------------------------------------------------------------------'
+dim sendEmail, formValidation 
+if request.form("testTextField") = "" then
+       formValidation = false
+elseif request.form("txtboxEmailTo") = "" then
+       formValidation = false
+elseif request.form("txtboxEmailFrom") = "" then
+       formValidation = false
+elseif request.form("txtareaSubject") = "" then
+       formValidation = false
+else
+       formValidation = true
+end if
+'-------------------------------------------------------------------------------------------'
+'------If the form is valid then email can be send and diable send button for a minute------'
+'-------------------------------------------------------------------------------------------'
+if formValidation = false then
+	sendEmail = false
+else 
+    Session("Csadf413dsf333fgw32563")="disabled"
+    Session.Timeout=1
+	sendEmail = true
+end if
+'-------------------------------------------------------------------------------------------'
+'--------------ASP code to create variables for the values of each form field---------------'
+'-HTMLEncode sanitizes the values and will check if UTF-8 is properly set up on that server-'
+'----------If it is not UTF-8 the form is not going to send and errors will throw-----------'
+'-Subject will have UTF-8 errors unless HTMLEncode is removed but that creates insecurities-'
+testTextField = Server.HTMLEncode(trim(request.form("testTextField")))
+txtboxEmailTo = Server.HTMLEncode(trim(request.form("txtboxEmailTo")))
+txtboxEmailFrom = Server.HTMLEncode(trim(request.form("txtboxEmailFrom")))
+txtareaSubject = Server.HTMLEncode(trim(request.form("txtareaSubject")))
+'-------------------------------------------------------------------------------------------'
+'----------ASP code to bind variables to email message, and also send email message---------'
+'-------------------------------------------------------------------------------------------'
+dim msg, emailForm
+	set emailForm = server.CreateObject ("CDO.Message")
+		emailForm.From = txtboxEmailFrom
+		emailForm.Subject = txtareaSubject
+		emailForm.To = txtboxEmailTo
+		msg = "output:" & "<br /><br />"
+		msg = msg & "Body of email : " & "<br /><br />" & testTextField & "<br />"
+		emailForm.HTMLBody = msg
+		emailForm.Configuration.Fields.Item _
+		("http://schemas.microsoft.com/cdo/configuration/sendusing")=2
+		'Name or IP of remote SMTP server
+		emailForm.Configuration.Fields.Item _
+		("http://schemas.microsoft.com/cdo/configuration/smtpserver")="smtp.nat.dfo-mpo.ca"
+		'Server port
+		emailForm.Configuration.Fields.Item _
+		("http://schemas.microsoft.com/cdo/configuration/smtpserverport")=25
+		emailForm.Configuration.Fields.Update
+'-------------------------------------------------------------------------------------------'
+'----if the email is valid then send it and then empty it to prepare for new submissions----'
+'-------------------------------------------------------------------------------------------'
+if sendEmail = true Then
+	emailForm.Send
+    set emailForm=nothing
+    Response.Redirect("testform.asp")
+End If
+%>
+        <!-- MainContentEnd -->
