@@ -39,6 +39,12 @@ var Sites = [
         Stg: ["wwwstg.ncr.dfo-mpo.ca"],
         Prod: ["dfo-mpo.gc.ca"]
 	},
+    {
+        /*-- Canada --*/
+        Dev: ["canada-preview.adobecqms.net"],
+        Stg: [""],
+        Prod: ["www.canada.ca"]
+	},
     /*------------------------------*/
 	
     /*------------------------------*/
@@ -73,7 +79,11 @@ var Sites = [
     for (Site in Sites) {
         for (Version in Sites[Site]) {
             if (Sites[Site][Version].indexOf(location.host.replace(/^www\./g, "")) !== -1 && Sites[Site][SiteVersion][0] !== undefined) {
-                location.host = Sites[Site][SiteVersion][0];
+                if (Sites[Site][SiteVersion][0] === "canada.ca") { 
+                    location.host = "www." + Sites[Site][SiteVersion][0];
+                } else { 
+                    location.host = Sites[Site][SiteVersion][0]; 
+                }
             }
         }
     }
