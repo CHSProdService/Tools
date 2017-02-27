@@ -1,0 +1,75 @@
+.fgpMapParent {
+    height: 100%!important;
+    /*56vh;  viewport height */
+    width: 100%!important;
+    display: inline-block!important;
+}
+
+main div.fgpv {
+    border: 0px solid black;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.fgpbuttons {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #606060;
+}
+
+.fgpbutton {
+    background-image: linear-gradient(#1c761c, #1c761c);
+    border-color: #1c761c;
+    color: #ffffff;
+}
+
+.fgpbutton:hover,
+.fgpbutton:focus,
+.fgpbutton:active {
+    background: buttonface;
+    border-color: #cccccc;
+    color: #000000;
+}
+
+.fgpcontainer {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: auto!important;
+}
+
+.fgplogo {
+    height: 30px;
+    position: relative;
+    top: -2px;
+    padding-right: 5px;
+}
+
+#fgpSignIn {
+    padding: 0px;
+}
+
+.fgpButtonRow {
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+    border-top: 1px solid white;
+}
+
+.fgpMapRow {
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+}
+
+.panel-body {
+    padding: 0px!important;
+}
+
+.main-appbar {
+    display: none!important;
+}
