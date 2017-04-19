@@ -2,6 +2,10 @@
 
 This repository holds the current files required to embed an interactive open map into pages for Canada.ca
 
+>There is currently a bug with the interaction of the **Open maps embed** and the sortable **wb-table class** for WET4. When a user clicked on any aspect of the map embed, the search bar and dropdown of the wb-table becomes unresponsive.
+
+>There is currently no solution to this bug, so it is recommended that you do *not* use an Open map and a wb-table on the same page. 
+
 ## How it works
 
 The **maps-cartes-eng/fra.html** file contains an iframe which includes the **data-eng/fra.html** file containing all of the heavy lifting for the map application to actually run. This allows you to embed a map on a page simply by including the **maps-cartes-eng/fra.html** file. 
