@@ -34,6 +34,16 @@
    <script src="http://wet-boew.github.io/v4.0-ci/wet-boew/js/wet-boew.min.js"></script>
    <script src="http://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
 
+    <script>
+        /*- This script removes the "tabindex" attribute from the shell of the map. -*/
+        $(window).load(function () {
+            $('.rv-esri-map').removeAttr('tabindex');
+        });
+        /*-- The reason for this script is having a tabindex on the shell for the map
+        itself caused the page to always target the map and not allow any other elements 
+        to be selected such as text boxes and dropdowns. --*/
+    </script>
+
 </body>
 
 </html>
