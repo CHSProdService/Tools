@@ -65,7 +65,7 @@ Incorrect: http://geoportal.gc.ca/arcgis/rest/services/FGP/DFO_ContactInformatio
 
 Essentially all you will need to do to embed this into a page is add some sort of include, be it an ASP include or an ajax-data-replace, that points to the **maps-cartes-eng/fra.html** file.
 
-    <!--include virtual="/path/maps-cartes/map-carte-eng.html"-->
+    <!--#include virtual="/path/maps-cartes/map-carte-eng.html"-->
 
 or
 
