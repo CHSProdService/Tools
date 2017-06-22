@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<!-- DFO WET 4.0.24 template -->
+
+<head>
+    <meta charset="utf-8">
+    <title>DFO - Custom</title>
+    <link href="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/assets/favicon.ico" rel="icon" />
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!--[if gte IE 9 | !IE ]><!-->
+    <link rel="stylesheet" href="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/css/wet-boew.min.css" />
+    <!--<![endif]-->
+    <link rel="stylesheet" href="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/css/theme.min.css" />
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/css/ie8-wet-boew.css"/>
+    <link rel="stylesheet" href="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/css/ie8-theme.min.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/js/ie8-wet-boew.min.js"></script>
+    <![endif]-->
+    <noscript>
+<link rel="stylesheet" href="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/css/noscript.min.css" />
+</noscript>
+    <style>
+        /* WET4 stuff */
+        
+        .wb-eqht section {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 15px;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .wb-eqht section {
+                width: 49%;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .wb-eqht section {
+                width: 33%;
+            }
+        }
+        /* 3d flipping container */
+        
+        .flip-container {
+            -webkit-perspective: 1000;
+            -moz-perspective: 1000;
+            -ms-perspective: 1000;
+            perspective: 1000;
+            -ms-transform: perspective(1000px);
+            -moz-transform: perspective(1000px);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            border: 1px solid #ccc;
+        }
+        /* IE */
+        
+        .flip-container:hover .back,
+        .flip-container.hover .back {
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+        
+        .flip-container:hover .front,
+        .flip-container.hover .front {
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+        /* container */
+        
+        .flip-container {
+            width: 100%;
+            height: 327px;
+        }
+        
+        .front,
+        .back {
+            width: 100%;
+            height: 325px;
+        }
+        
+        .flipper {
+            -webkit-transition: 1.0s;
+            -webkit-transform-style: preserve-3d;
+            -ms-transition: 1.0s;
+            -moz-transition: 1.0s;
+            -moz-transform: perspective(1000px);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transition: 1.0s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        
+        .front,
+        .back {
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transition: 1.0s;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform: rotateY(0deg);
+            -moz-transition: 1.0s;
+            -moz-transform-style: preserve-3d;
+            -moz-transform: rotateY(0deg);
+            -o-transition: 1.0s;
+            -o-transform-style: preserve-3d;
+            -o-transform: rotateY(0deg);
+            -ms-transition: 1.0s;
+            -ms-transform-style: preserve-3d;
+            -ms-transform: rotateY(0deg);
+            transition: 1.0s;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .front {
+            -webkit-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            z-index: 2;
+        }
+        
+        .back {
+            -webkit-transform: rotateY(-180deg);
+            -moz-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+            -ms-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+        }
+        /* vertical rotate */
+        
+        .vertical.flip-container {
+            position: relative;
+        }
+        
+        .vertical .back {
+            -webkit-transform: rotateX(180deg);
+            -moz-transform: rotateX(180deg);
+            -ms-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+        }
+        
+        .vertical.flip-container .flipper {
+            -webkit-transform-origin: 100%;
+            -moz-transform-origin: 100%;
+            -ms-transform-origin: 100%;
+            transform-origin: 100%;
+        }
+        /* IE vertical rotate */
+        
+        .vertical.flip-container:hover .back,
+        .vertical.flip-container.hover .back {
+            -webkit-transform: rotateX(0deg);
+            -moz-transform: rotateX(0deg);
+            -o-transform: rotateX(0deg);
+            -ms-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+        }
+        
+        .vertical.flip-container:hover .front,
+        .vertical.flip-container.hover .front {
+            -webkit-transform: rotateX(180deg);
+            -moz-transform: rotateX(180deg);
+            -o-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+        }
+        /* Tile images */
+        
+        .red-image {
+            background-image: url(/science/mockup-WET4/custom-elements/red.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        
+        .blue-image {
+            background-image: url(/science/mockup-WET4/custom-elements/blue.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        
+        .green-image {
+            background-image: url(/science/mockup-WET4/custom-elements/green.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+    </style>
+    <script src="/includes/scripts/dfo-mpo-ga.js"></script>
+</head>
+
+<body vocab="http://schema.org/" typeof="WebPage">
+    <ul id="wb-tphp">
+        <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a> </li>
+        <li class="wb-slc visible-sm visible-md visible-lg"> <a class="wb-sl" href="#wb-info">Skip to "About this site"</a> </li>
+    </ul>
+    <header role="banner">
+        <!--#include virtual="/includes/header4-en.html"-->
+        <nav role="navigation" id="wb-bc" property="breadcrumb">
+            <h2>You are here:</h2>
+            <div class="container">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a href='/index-eng.htm'>Home</a></li>
+                        <li class='active'>Custom</li>
+                    </ol>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" property="mainContentOfPage" class="container">
+        <!-- MainContentStart -->
+        <div class="row">
+            <div class="col-md-12">
+                <h1 property="name" id="wb-cont">Custom</h1>
+                <div class="clearfix">
+                    <h2>Custom tile transitions</h2>
+                    <div class="row mrgn-tp-lg mrgn-bttm-lg">
+                        <div class="col-md-4 mrgn-bttm-md">
+                            <div class="flip-container vertical" ontouchstart="this.classList.toggle('hover');">
+                                <div class="flipper">
+                                    <div class="front red-image">
+                                        <h2 class="mrgn-tp-md text-center">Tile #1, this tiles flips vertically</h2>
+                                    </div>
+                                    <div class="back mrgn-tp-md text-center">
+                                        <p>This is tile #1's backside</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mrgn-bttm-md">
+                            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                <div class="flipper">
+                                    <div class="front blue-image">
+                                        <h2 class="mrgn-tp-md text-center">Tile #2, this tiles flips horizontally</h2>
+                                    </div>
+                                    <div class="back mrgn-tp-md text-center">
+                                        <p>This is tile #2's backside</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mrgn-bttm-md">
+                            <div class="flip-container vertical" ontouchstart="this.classList.toggle('hover');">
+                                <div class="flipper">
+                                    <div class="front green-image">
+                                        <h2 class="mrgn-tp-md text-center">Tile #3, this tiles flips vertically</h2>
+                                    </div>
+                                    <div class="back mrgn-tp-md text-center">
+                                        <p>This is tile #3's backside</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mrgn-bttm-md">
+                            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                <div class="flipper">
+                                    <div class="front red-image">
+                                        <h2 class="mrgn-tp-md text-center">Tile #4, this tiles flips horizontally</h2>
+                                    </div>
+                                    <div class="back mrgn-tp-md text-center">
+                                        <p>This is tile #4's backside</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mrgn-bttm-md">
+                            <div class="flip-container vertical" ontouchstart="this.classList.toggle('hover');">
+                                <div class="flipper">
+                                    <div class="front blue-image">
+                                        <h2 class="mrgn-tp-md text-center">Tile #5, this tiles flips vertically</h2>
+                                    </div>
+                                    <div class="back mrgn-tp-md text-center">
+                                        <p>This is tile #5's backside</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mrgn-bttm-md">
+                            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                <div class="flipper">
+                                    <div class="front green-image">
+                                        <h2 class="mrgn-tp-md text-center">Tile #6, this tiles flips horizontally</h2>
+                                    </div>
+                                    <div class="back mrgn-tp-md text-center">
+                                        <p>This is tile #6's backside</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MainContentEnd -->
+        <div class="col-sm-3 col-xs-6 text-right mrgn-bttm-md">
+            <div class="wb-share mrgn-tp-md" data-wb-share='{"lnkClass": "btn btn-default"}'></div>
+        </div>
+
+        <dl id="wb-dtmd">
+            <dt>Date modified: </dt>
+            <dd>
+                <time property="dateModified">2017-06-01</time>
+            </dd>
+        </dl>
+    </main>
+    <!--#include virtual="/includes/footer4-en.html"-->
+    <!--[if gte IE 9 | !IE ]><!-->
+    <script src="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/js/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/js/wet-boew.min.js"></script>
+    <!--<![endif]-->
+    <!--[if lt IE 9]><script src="/science/dist/themes-dist-4.0.24-theme-gcwu-fegc/js/ie8-wet-boew2.min.js"></script><![endif]-->
+</body>
+
+</html>
